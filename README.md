@@ -1,4 +1,4 @@
-# WebApp
+# App
 
 <table>
 <tr>

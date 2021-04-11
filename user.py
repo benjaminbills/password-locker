@@ -12,7 +12,7 @@ class User(Credential):
 
     user_list = []
 
-    def save_user(self):
+    def save_user_account(self):
         '''
         save user method saves a new user objects to the user_list
         '''

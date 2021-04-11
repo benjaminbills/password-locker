@@ -26,6 +26,13 @@ class TestUser(unittest.TestCase):
         self.assertEqual(len(User.user_list), 1)
     # setup and class creation up here
 
+    def test_display_all_user_accounts(self):
+        '''
+        method that returns a list of all contacts saved
+        '''
+
+        self.assertEqual(User.display_user_accounts(), User.user_list)
+
 
 if __name__ == '__main__':
     unittest.main()

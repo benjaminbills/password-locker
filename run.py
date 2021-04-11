@@ -25,11 +25,34 @@ def display_accounts():
 
 
 def main():
-    print('Hello Welcome to password locker app. What is your name')
+    print('Hello Welcome to password locker app. What is your name?')
     user_name = input()
 
     print(f'Hello {user_name}. What would you like to do?')
     print('\n')
+
+    while True:
+        print('Use thes short codes: cu - create new account, da - display accounts')
+
+        short_code = input().lower()
+
+        if short_code == 'cu':
+            print('New account')
+            print('-' * 10)
+
+            print('Account Name eg. facebook, twitter etc')
+            a_name = input()
+
+            print('User name ...')
+            u_name = input()
+
+            print('Password ...')
+            password = input()
+
+            # create and save user account details
+            save_user_account(create_account(a_name, u_name, password))
+            print('\n')
+            print(f'New {a_name} account created for {u_name} ')
 
 
 if __name__ == '__main__':

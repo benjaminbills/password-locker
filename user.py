@@ -1,13 +1,16 @@
-class User:
+class Credential:
+    def __init__(self, account, user_name, password):
+        self.account = account
+        self.user_name = user_name
+        self.password = password
+
+
+class User(Credential):
     '''
     class that generates new instance of user
     '''
 
     user_list = []
-
-    def __init__(self, user_name, password):
-        self.user_name = user_name
-        self.password = password
 
     def save_user(self):
         '''

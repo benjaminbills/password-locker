@@ -54,6 +54,22 @@ def main():
             print('\n')
             print(f'New {a_name} account created for {u_name} ')
 
+        elif short_code == 'da':
+
+            if display_accounts():
+                print('Here is a list of all your account credentials')
+                print('\n')
+
+                for user in display_accounts():
+                    print(f'{user.account} {user.user_name} {user.password}')
+
+        elif short_code == 'ex':
+            print('Bye ...')
+            break
+
+        else:
+            print("I really didn't get that. Please use the short codes.")
+
 
 if __name__ == '__main__':
     main()

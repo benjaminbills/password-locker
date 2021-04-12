@@ -12,16 +12,23 @@ def create_account(aname, username, password):
 
 def save_user_account(user):
     '''
-    Function to save contact
+    Function to save account
     '''
     user.save_user_account()
 
 
 def display_accounts():
     '''
-    Function that returns all the saved contacts
+    Function that returns all the saved accounts
     '''
     return User.display_user_accounts()
+
+
+def check_existing_account(account_name):
+    '''
+    Function that check if a contact exists with that number and return a Boolean
+    '''
+    return User.account_exist(account_name)
 
 
 def main():
@@ -32,7 +39,7 @@ def main():
     print('\n')
 
     while True:
-        print('Use thes short codes: cu - create new account, da - display accounts')
+        print('Use thes short codes: cu - create new account, da - display accounts, li - login ex - exit')
 
         short_code = input().lower()
 
@@ -46,7 +53,9 @@ def main():
             print('User name ...')
             u_name = input()
 
-            print('Password ...')
+            print(
+                'Enter password or generate password.')
+
             password = input()
 
             # create and save user account details
@@ -54,6 +63,17 @@ def main():
             print('\n')
             print(f'New {a_name} account created for {u_name} ')
 
+        elif short_code == 'li':
+            print('Enter account name')
+            a_name = input()
+
+            if check_existing_account(a_name):
+                print('Enter username')
+                u_name = input()
+                print('Enter password or generate password.')
+
+            else:
+                print('That account does not exist')
         elif short_code == 'da':
 
             if display_accounts():

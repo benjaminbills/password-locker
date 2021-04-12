@@ -31,7 +31,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 ## Built with
 
-- [Python](https://www.python.org/)- version 3.8.5. - Javascript framework for building Application.
+- [Python](https://www.python.org/)- version 3.8.5.
 
 ## [License](https://github.com/benjaminbills/password-locker/blob/master/License)
 

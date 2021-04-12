@@ -55,11 +55,11 @@ class User(Credential):
     @classmethod
     def check_credentials(cls, account_name, user_name, password):
         '''
-        Method that checks if a contact exists from the contact list.
+        Method that checks if user credential is correct for authentication from the user account list.
         Args:
-            number: Phone number to search if it exists
+            account_name, user_name, passsword
         Returns :
-            Boolean: True or false depending if the contact exists
+            Boolean: True or false depending if the details is correct
         '''
         for user in cls.user_account_list:
             if user.account == account_name and user.user_name == user_name and user.password == password:

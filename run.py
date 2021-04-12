@@ -61,11 +61,11 @@ def main():
     print('\n')
 
     while True:
-        print('Use thes short codes: cu - create new account, da - display accounts, li - login ex - exit')
+        print('Use thes short codes: ca - create new account, da - display accounts, li - login, ex - exit')
 
         short_code = input().lower()
 
-        if short_code == 'cu':
+        if short_code == 'ca':
             print('New account')
             print('-' * 10)
 
@@ -79,17 +79,22 @@ def main():
                 'Enter password or generate password.')
             print('Enter ep - enter password and gp - generate password')
 
-            password_short_code = input()
-            if password_short_code == 'gp':
+            short_code = input().lower()
+            if short_code == 'gp':
                 password = generate_password()
-            elif password_short_code == 'ep':
+                save_user_account(create_account(a_name, u_name, password))
+                print('\n')
+                print(f'New {a_name} account created for {u_name} ')
+            elif short_code == 'ep':
                 print('Enter password...')
                 password = input()
-
-            # create and save user account details
-            save_user_account(create_account(a_name, u_name, password))
-            print('\n')
-            print(f'New {a_name} account created for {u_name} ')
+                # create and save user account details
+                save_user_account(create_account(a_name, u_name, password))
+                print('\n')
+                print(f'New {a_name} account created for {u_name} ')
+            else:
+                print(
+                    'please enter the short code to generate password -gp or enter password')
 
         elif short_code == 'li':
             print('Enter account name')

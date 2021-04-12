@@ -37,3 +37,18 @@ class User(Credential):
         for user in cls.user_account_list:
             if user.account == account_name:
                 return True
+
+    @classmethod
+    def find_by_details(cls, account, user_name, password):
+        '''
+        Method that takes in account details and returns an account that matches that the given details.
+
+        Args:
+            number: Phone number to search for
+        Returns :
+            Contact of person that matches the number.
+        '''
+
+        for user in cls.user_account_list:
+            if user.account == account and user.user_name == user_name and user.password == password:
+                return user

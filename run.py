@@ -41,12 +41,12 @@ def find_account(account_name, user_name, password):
     return User.find_by_details(account_name, user_name, password)
 
 
-def generate_password():
+def generate_password(ps_length):
     '''
     Function that generate password
     '''
     alphabet = string.ascii_letters + string.digits
-    password = ''.join(secrets.choice(alphabet) for i in range(8))
+    password = ''.join(secrets.choice(alphabet) for i in range(ps_length))
     return password
 
 
@@ -66,27 +66,36 @@ def main():
     print('\n')
 
     while True:
-        print('Use thes short codes: ca - create new account, da - display accounts, li - login, ex - exit')
+        print('Use thes short codes: \n ca - create new account, \n da - display accounts, \n li - login, \n cc - copy to clipboard \n ex - exit')
 
         short_code = input().lower()
 
         if short_code == 'ca':
             print('New account')
-            print('-' * 10)
+            print('==' * 25)
 
-            print('Account Name eg. facebook, twitter etc')
+            print('Account Name eg. facebook, twitter etc:')
+            print("Enter Account Name")
             a_name = input()
 
-            print('User name ...')
+            print('Enter User name')
             u_name = input()
 
             print(
                 'Enter password or generate password.')
-            print('Enter ep - enter password and gp - generate password')
+            print('Use short code: \n ep - enter password \n gp - generate password')
 
             short_code = input().lower()
             if short_code == 'gp':
-                password = generate_password()
+                print('Enter length of password')
+                print('Your password length cannot be less than 5')
+                print(
+                    'If you enter any number less than 5 app will use default password length of 5')
+                ps_length = int(input())
+                if ps_length < 5:
+                    password = generate_password(5)
+                else:
+                    password = generate_password(ps_length)
                 save_user_account(create_account(a_name, u_name, password))
                 print('\n')
                 print(f'New {a_name} account created for {u_name} ')
@@ -115,6 +124,7 @@ def main():
                     search_account = find_account(a_name, u_name, password)
                     print(
                         f'You have succefully logged in to your {search_account.account} account')
+                    print('==' * 25)
                 else:
                     print('Incorrect password or user name')
             else:
@@ -134,6 +144,7 @@ def main():
                 copy_to_clipboard(account)
                 print(pyperclip.paste())
                 print('Successfully Copied...')
+                print('==' * 25)
             else:
                 print('Account does not exist')
         elif short_code == 'ex':

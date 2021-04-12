@@ -88,4 +88,3 @@ class User(Credential):
 
         pyperclip.copy(
             f'account:{user_found.account} \n username:{user_found.user_name} \n password:{user_found.password}')
-        pyperclip.paste()

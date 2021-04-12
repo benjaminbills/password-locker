@@ -2,6 +2,7 @@
 from user import User
 import string
 import secrets
+import pyperclip
 
 
 def create_account(aname, username, password):
@@ -131,7 +132,8 @@ def main():
             account = input()
             if check_existing_account(account):
                 copy_to_clipboard(account)
-                print('Succefully copied to clipboard')
+                print(pyperclip.paste())
+                print('Successfully Copied...')
             else:
                 print('Account does not exist')
         elif short_code == 'ex':

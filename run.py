@@ -53,6 +53,10 @@ def check_credentials(account_name, user_name, password):
     return User.check_credentials(account_name, user_name, password)
 
 
+def copy_to_clipboard(account):
+    return User.copy_details(account)
+
+
 def main():
     print('Hello Welcome to password locker app. What is your name?')
     user_name = input()
@@ -122,7 +126,14 @@ def main():
 
                 for user in display_accounts():
                     print(f'{user.account} {user.user_name} {user.password}')
-
+        elif short_code == 'cc':
+            print('Enter account name you want to copy')
+            account = input()
+            if check_existing_account(account):
+                copy_to_clipboard(account)
+                print('Succefully copied to clipboard')
+            else:
+                print('Account does not exist')
         elif short_code == 'ex':
             print('Bye ...')
             break

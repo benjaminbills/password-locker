@@ -33,10 +33,21 @@ def check_existing_account(account_name):
     return User.account_exist(account_name)
 
 
+def find_account(account_name, user_name, password):
+    '''
+    Function that finds a contact by number and returns the contact
+    '''
+    return User.find_by_details(account_name, user_name, password)
+
+
 def generate_password():
     alphabet = string.ascii_letters + string.digits
     password = ''.join(secrets.choice(alphabet) for i in range(8))
     return password
+
+
+def check_credentials(account_name, user_name, password):
+    return User.check_credentials(account_name, user_name, password)
 
 
 def main():
@@ -84,8 +95,15 @@ def main():
             if check_existing_account(a_name):
                 print('Enter username')
                 u_name = input()
-                print('Enter password or generate password.')
+                print('Enter password')
 
+                password = input()
+                if check_credentials(a_name, u_name, password):
+                    search_account = find_account(a_name, u_name, password)
+                    print(
+                        f'You have succefully logged in to your {search_account.account} account')
+                else:
+                    print('Incorrect password or user name')
             else:
                 print('That account does not exist')
         elif short_code == 'da':

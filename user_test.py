@@ -68,6 +68,20 @@ class TestUser(unittest.TestCase):
         self.assertEqual(found_user_account.account, test_user.account)
         self.assertEqual(found_user_account.password, test_user.password)
 
+    def test_check_credentials(self):
+        '''
+        test to check if user password and username and account is correct
+        '''
+
+        self.user_account.save_user_account()
+        test_user = User("facebook", "user", "user123")  # new contact
+        test_user.save_user_account()
+
+        found_user_account = User.check_credentials(
+            "facebook", "user", "user123")
+
+        self.assertTrue(found_user_account)
+
 
 if __name__ == '__main__':
     unittest.main()

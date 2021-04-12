@@ -28,14 +28,14 @@ def display_accounts():
 
 def check_existing_account(account_name):
     '''
-    Function that check if a contact exists with that number and return a Boolean
+    Function that check if a account name exists with that account name and return a Boolean
     '''
     return User.account_exist(account_name)
 
 
 def find_account(account_name, user_name, password):
     '''
-    Function that finds a contact by number and returns the contact
+    Function that finds an account by account_name, user-name and password and returns the account
     '''
     return User.find_by_details(account_name, user_name, password)
 

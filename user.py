@@ -42,7 +42,6 @@ class User(Credential):
     def find_by_details(cls, account, user_name, password):
         '''
         Method that takes in account details and returns an account that matches that the given details.
-
         Args:
             number: Phone number to search for
         Returns :
@@ -52,3 +51,16 @@ class User(Credential):
         for user in cls.user_account_list:
             if user.account == account and user.user_name == user_name and user.password == password:
                 return user
+
+    @classmethod
+    def check_credentials(cls, account_name, user_name, password):
+        '''
+        Method that checks if a contact exists from the contact list.
+        Args:
+            number: Phone number to search if it exists
+        Returns :
+            Boolean: True or false depending if the contact exists
+        '''
+        for user in cls.user_account_list:
+            if user.account == account_name and user.user_name == user_name and user.password == password:
+                return True

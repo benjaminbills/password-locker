@@ -1,5 +1,6 @@
 import unittest
 from user import User
+import pyperclip
 
 
 class TestUser(unittest.TestCase):
@@ -81,6 +82,15 @@ class TestUser(unittest.TestCase):
             "facebook", "user", "user123")
 
         self.assertTrue(found_user_account)
+
+    def test_copy_details(self):
+        '''
+        Test to confirm that we are copying account details.
+        '''
+        self.user_account.save_user_account()
+        User.copy_details('facebook')
+        # For this test to pass uncomment copy details method
+        self.assertEqual(self.user_account.user_name, pyperclip.paste())
 
 
 if __name__ == '__main__':

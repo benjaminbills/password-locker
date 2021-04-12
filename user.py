@@ -85,6 +85,8 @@ class User(Credential):
     @classmethod
     def copy_details(cls, account):
         user_found = User.find_by_account(account)
-
+        # uncomment the code to test copy to clip board
+        # pyperclip.copy(user_found.user_name)
+        # comment the below code
         pyperclip.copy(
             f'account:{user_found.account} \n username:{user_found.user_name} \n password:{user_found.password}')

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3.8
 from user import User
+import string
+import secrets
 
 
 def create_account(aname, username, password):
@@ -29,6 +31,12 @@ def check_existing_account(account_name):
     Function that check if a contact exists with that number and return a Boolean
     '''
     return User.account_exist(account_name)
+
+
+def generate_password():
+    alphabet = string.ascii_letters + string.digits
+    password = ''.join(secrets.choice(alphabet) for i in range(8))
+    return password
 
 
 def main():

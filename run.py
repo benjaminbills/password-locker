@@ -63,8 +63,14 @@ def main():
 
             print(
                 'Enter password or generate password.')
+            print('Enter ep - enter password and gp - generate password')
 
-            password = input()
+            password_short_code = input()
+            if password_short_code == 'gp':
+                password = generate_password()
+            elif password_short_code == 'ep':
+                print('Enter password...')
+                password = input()
 
             # create and save user account details
             save_user_account(create_account(a_name, u_name, password))
